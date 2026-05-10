@@ -1,14 +1,30 @@
-# 灵芽口播助手
+# IPClaw 口播版
+
+> 🎙️ **IPClaw 生态的口播内容创作工具** - AI 驱动的口播选题与文案工作台
 
 纯静态前端：AI 口播选题与文案工作台。数据存 **Supabase**，生成 / 对话 / 爆款分析走 **DeepSeek**，可部署在 **Netlify** 等静态托管，无需自建 Node 后端。
 
-## 功能概览
+---
+
+## 🎯 产品定位
+
+**IPClaw 口播版** 是 [IPClaw 生态](https://github.com/AIPMAndy/IPClaw-for-Seniors) 的垂直工具，专为内容创作者打造：
+
+- 🎙️ **口播创作者** - 短视频、播客、直播
+- ✍️ **自媒体人** - 公众号、知乎、小红书
+- 👴 **50+ 长辈** - 配合 IPClaw for Seniors 使用
+
+---
+
+## ✨ 功能概览
 
 - **AI 对话**：Agent 批量生成口播包、Ask 答疑；侧栏 **爆款参考** 按关键词拉选题与标题并可注入对话
 - **选题库**：分页、筛选、行内编辑，数据直连 Supabase
 - **生成偏好**：人设与语气等设置，存 `app_settings`
 
-## 技术栈
+---
+
+## 🏗️ 技术栈
 
 | 部分 | 说明 |
 |------|------|
@@ -17,7 +33,9 @@
 | AI | DeepSeek Chat Completions API（浏览器 `fetch`） |
 | 部署 | Netlify；构建时用 `scripts/netlify-inject.mjs` 注入密钥 |
 
-## 目录结构
+---
+
+## 📁 目录结构
 
 ```
 ├── index.html              # 入口（NETLIFY_CONFIG 占位，构建时被替换）
@@ -31,7 +49,11 @@
     └── schema.sql          # 建表与 RLS（需在控制台执行）
 ```
 
-## Supabase 准备
+---
+
+## 🚀 快速开始
+
+### 1. Supabase 准备
 
 1. 新建项目，打开 **SQL Editor**。
 2. 执行仓库中的 `supabase/schema.sql`（创建 `topics`、`app_settings`、`generation_logs` 等）。
@@ -40,7 +62,7 @@
    - **anon public** 或 **publishable** 密钥
 4. 按业务收紧 **RLS**；浏览器会使用 anon 密钥访问数据库。
 
-## Netlify 部署
+### 2. Netlify 部署
 
 1. 将仓库连接到 Netlify，使用默认分支构建。
 2. 在 **Site configuration → Environment variables** 添加（Production / Preview 按需勾选）：
@@ -63,7 +85,9 @@
 
 **注意：** 不要将「已注入真实密钥」的 `index.html` 提交到 Git；仓库中应始终保持占位空串。
 
-## 本地开发
+---
+
+## 💻 本地开发
 
 需要 **Node.js**（用于注入脚本）。
 
@@ -90,15 +114,41 @@
 
 若未配置完整变量，注入脚本会告警，页面可能以「离线示例」运行 DeepSeek 相关能力。
 
-## 安全说明
+---
+
+## 🔒 安全说明
 
 - 部署后的 HTML **可见** Supabase anon 与 DeepSeek Key，访客可在开发者工具中看到；这是静态站「全员共用一把钥匙」模式的固有风险。
 - 务必配置 **RLS**、监控 **DeepSeek 用量与费用**；更高安全需 **服务端或 Edge 函数** 代理 AI 与敏感操作。
 
-## 脚本说明
+---
+
+## 🛠️ 脚本说明
 
 - `npm run inject`：等价于 `node scripts/netlify-inject.mjs`，读取 `process.env` 与可选的 `.env`，替换 `index.html` 中 `<!-- NETLIFY_CONFIG_START -->` … `<!-- NETLIFY_CONFIG_END -->` 整块；并对全文中 `DEEPSEEK_API_KEY_PLACEHOLDER` 做全局替换（若存在）。
 
-## 许可证
+---
 
-Private（见 `package.json`）。
+## 🌟 IPClaw 生态
+
+**IPClaw 口播版** 是 IPClaw 生态的一部分：
+
+- 🖥️ [**IPClaw for Seniors**](https://github.com/AIPMAndy/IPClaw-for-Seniors) - 让 50+ 长辈也能做自己的 IP
+- 🎙️ **IPClaw 口播版** - AI 口播选题与文案工具（本项目）
+- 🌐 [**MDskill-Web**](https://github.com/AIPMAndy/MDskill-Web) - Markdown 在线排版工具
+
+---
+
+## 📮 联系方式
+
+- 💬 微信：AIPMAndy
+- 🐛 Bug 反馈：[GitHub Issues](https://github.com/AIPMAndy/IPClaw-Speech/issues)
+- 💡 功能建议：[GitHub Issues](https://github.com/AIPMAndy/IPClaw-Speech/issues)
+
+---
+
+## 📄 开源协议
+
+本项目基于原项目 [ai-speech](https://github.com/Jaller-coder/ai-speech) 修改，感谢原作者！
+
+MIT License
