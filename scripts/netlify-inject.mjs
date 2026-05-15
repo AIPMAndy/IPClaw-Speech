@@ -1,14 +1,17 @@
 /**
- * Netlify 构建时把环境变量写入 index.html，供浏览器使用。
+ * IPClaw 口播版 - Netlify 构建脚本
+ * 
+ * 功能：在构建时将环境变量注入到 index.html，供浏览器使用。
  *
- * 在 Netlify：Site configuration → Environment variables 添加：
- *   DEEPSEEK_API_KEY     — DeepSeek 密钥（必填，否则构建失败）
- *   SUPABASE_URL         — 如 https://xxxx.supabase.co（不要 /rest/v1）
- *   SUPABASE_ANON_KEY    — 项目 anon / publishable 公钥（必填）
+ * Netlify 环境变量配置（Site configuration → Environment variables）：
+ *   DEEPSEEK_API_KEY     — DeepSeek API 密钥（必填，否则构建失败）
+ *   SUPABASE_URL         — Supabase 项目 URL，如 https://xxxx.supabase.co（不要 /rest/v1）
+ *   SUPABASE_ANON_KEY    — Supabase 项目 anon / publishable 公钥（必填）
  *
- * 本地预览（可选）：在项目根执行
+ * 本地开发预览（可选）：
+ *   在项目根目录创建 .env 文件（已被 .gitignore 忽略），或直接在命令行传入：
  *   DEEPSEEK_API_KEY=sk-... SUPABASE_URL=https://....supabase.co SUPABASE_ANON_KEY=eyJ... node scripts/netlify-inject.mjs
- * 再打开 index.html（建议用静态服务器）。
+ *   然后使用静态服务器打开 index.html
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";

@@ -1,9 +1,13 @@
 {
-  "name": "ai-speech",
+  "name": "ipclaw-speech",
   "version": "1.0.0",
+  "description": "IPClaw 生态的 AI 口播助手 - 选题生成与文案创作工具",
   "private": true,
   "type": "module",
   "scripts": {
     "inject": "node scripts/netlify-inject.mjs"
-  }
+  },
+  "keywords": ["ipclaw", "ai", "speech", "content-creation"],
+  "author": "IPClaw Team",
+  "license": "MIT"
 }

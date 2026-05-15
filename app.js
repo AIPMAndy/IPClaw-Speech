@@ -1,3 +1,4 @@
+// IPClaw 口播版 - 核心业务逻辑
 // 纯静态站点（Netlify）：数据与设置走 Supabase；AI 走 DeepSeek（见 index.html）
 
 const pageTitleMap = {
@@ -706,7 +707,7 @@ async function submitChatMessage() {
         );
       } else {
         const mergedSettings = state.settings;
-        const systemPrompt = `你是「灵芽-口播助手」的对话顾问，帮用户解决口播选题、文案结构、表达节奏、平台习惯等问题。
+        const systemPrompt = `你是「IPClaw 口播版」的对话顾问，帮用户解决口播选题、文案结构、表达节奏、平台习惯等问题。
 回答要求：简洁、口语化、给可执行建议；不要编造数据；直接输出自然段文字，不要使用 JSON、代码块或 markdown 围栏。`;
         const userPrompt = `用户问题：
 ${task}
@@ -1307,7 +1308,7 @@ async function bootstrap() {
   }
 
   if (!getDeepseekApiKey()) {
-    console.info("[灵芽口播] 未配置 window.__DEEPSEEK_API_KEY：生成 / Ask / 爆款分析使用离线示例。");
+    console.info("[IPClaw 口播版] 未配置 window.__DEEPSEEK_API_KEY：生成 / Ask / 爆款分析使用离线示例。");
   }
 
   initEvents();

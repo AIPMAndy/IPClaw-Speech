@@ -1,4 +1,5 @@
--- 在 Supabase 控制台 → SQL Editor 中执行本文件，创建与灵芽口播助手后端对应的表与策略。
+-- IPClaw 口播版 - 数据库架构
+-- 在 Supabase 控制台 → SQL Editor 中执行本文件，创建 IPClaw 口播版所需的表与策略。
 -- 若使用「service_role」密钥仅跑在自有服务器上，可酌情关闭 RLS 或收紧策略。
 
 create table if not exists public.topics (
